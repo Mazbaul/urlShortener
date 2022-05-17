@@ -14,7 +14,3 @@ use App\Http\Controllers\UrlShortenerController;
 |
 */
 Route::get('/{hashcode}',[UrlShortenerController::class, 'redirectToOriginal']);
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });

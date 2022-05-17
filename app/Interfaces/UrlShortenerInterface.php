@@ -12,6 +12,6 @@ interface UrlShortenerInterface
     public function duplicateUrlCheck(string $url):ShortenUrlModel|null;
     public function generateUrl(string $url):array;
     public function saveShortenUrl(array $urlshort):ShortenUrlModel;
-    public function redirectToUrl(string $url);
+    public function redirectToUrl(string $url):string;
 
 }

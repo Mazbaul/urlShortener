@@ -16,7 +16,3 @@ use App\Http\Controllers\UrlShortenerController;
 */
 
 Route::post('/generate-shorten-url',[UrlShortenerController::class, 'generateShortenUrl']);
-
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });

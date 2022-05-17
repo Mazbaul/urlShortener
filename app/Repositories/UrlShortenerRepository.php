@@ -95,7 +95,7 @@ class UrlShortenerRepository implements UrlShortenerInterface
      return ShortenUrlModel::create($urlshort);
   }
 
-  public function redirectToUrl(string $hash)
+  public function redirectToUrl(string $hash):string
   {
     return ShortenUrlModel::where('hash_code','=',$hash)->first()->original_url;
   }
