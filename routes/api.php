@@ -14,10 +14,9 @@ use App\Http\Controllers\UrlShortenerController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('/user', function (Request $request) {
-    return $request->user();
-});
+
 Route::post('/generate-shorten-url',[UrlShortenerController::class, 'generateShortenUrl']);
+
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });

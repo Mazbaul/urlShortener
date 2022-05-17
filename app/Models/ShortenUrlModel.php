@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ShortenUrlModel extends Model
 {
     use HasFactory;
-    
+
+    protected $table='shorten_urls';
     protected $guarded = ['id'];
 
     public $timestamps = false;

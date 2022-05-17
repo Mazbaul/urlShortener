@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('shorten_url');
             $table->string('original_url');
+            $table->string('hash_code');
         });
     }
 

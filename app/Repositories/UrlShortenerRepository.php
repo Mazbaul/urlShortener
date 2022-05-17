@@ -6,15 +6,19 @@ use App\Interfaces\UrlShortenerInterface;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\JsonResponse;
+use App\Models\ShortenUrlModel;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Http\Client\Response AS HttpClientResponse;
 
 class UrlShortenerRepository implements UrlShortenerInterface
 {
   private string $api_key;
+
   public function __construct()
   {
       $this->apikey = is_null(env('GOOGLE_APP_API_KEY')) ? '' : env('GOOGLE_APP_API_KEY');
   }
+
   public function urlSafeBrowsingCheck(string $url)
   {
       $postUrl = 'https://safebrowsing.googleapis.com/v4/threatMatches:find?key='.$this->apikey;
@@ -71,20 +75,28 @@ class UrlShortenerRepository implements UrlShortenerInterface
 
              return $data;
   }
-  public function duplicateUrlCheck(string $url):JsonResponse
-  {
 
+  public function duplicateUrlCheck(string $url):ShortenUrlModel|null
+  {
+    return ShortenUrlModel::where('original_url','=',$url)->first();
   }
-  public function generateUrl(string $url):JsonResponse
-  {
 
+  public function generateUrl(string $url):array
+  {
+    $baseUrl = URL::to('');
+    return [
+            'baseUrl'=>$baseUrl.'/',
+            'hash_code'=>substr(md5(microtime()), 0, 6)
+            ];
   }
-  public function saveShortenUrl(string $url):JsonResponse
-  {
 
+  public function saveShortenUrl(array $urlshort ):ShortenUrlModel
+  {
+     return ShortenUrlModel::create($urlshort);
   }
-  public function redirectToOriginal(string $url):JsonResponse
-  {
 
+  public function redirectToUrl(string $hash)
+  {
+    return ShortenUrlModel::where('hash_code','=',$hash)->first()->original_url;
   }
 }
