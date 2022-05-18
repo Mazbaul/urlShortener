@@ -13,8 +13,6 @@ use App\Http\Resources\ShortenUrlResource;
 use DB;
 use Illuminate\Support\Facades\Redirect;
 
-
-
 class UrlShortenerController extends Controller
 {
     private UrlShortenerInterface $UrlShortenerRepository;
@@ -60,5 +58,10 @@ class UrlShortenerController extends Controller
     public function redirectToOriginal($shortenUrl)
     {
       return Redirect::to($this->UrlShortenerRepository->redirectToUrl($shortenUrl));
+    }
+
+    public function allShortenUrl()
+    {
+      return ShortenUrlModel::all();
     }
 }
