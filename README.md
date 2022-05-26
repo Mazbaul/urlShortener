@@ -1,7 +1,7 @@
 
 ## Description
 
-The task is developed by Laravel 9. Laravel Repository Pattern is used for development. Laravel Passport is used for API authentication. Frontend is developed by Vue3 in CLI mode. The API of GOOGLE SAFE BROWSING is used for url safety check. In development, SOLID design principles are fully followed for coding.Frontend Repo Link(https://github.com/Mazbaul/intustestfrontendvue).
+The project is developed by Laravel 9. Laravel Repository Pattern is used for development. Laravel Passport is used for API authentication. Frontend is developed by Vue3 in CLI mode. The API of GOOGLE SAFE BROWSING is used for url safety check. In development, SOLID design principles are fully followed for coding.Frontend Repo Link(https://github.com/Mazbaul/urlShortenerfrontendvue).
 
 ## Installation
 
